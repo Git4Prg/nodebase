@@ -20,7 +20,7 @@ import { ErrorView, LoadingView } from "@/components/entity-components";
 import { useSuspenseWorkflow } from "@/features/workflows/hooks/use-workflows"
 import '@xyflow/react/dist/style.css';
 import { nodeComponents } from '@/config/node-components';
-import { AddNodeButton } from '@/components/add-node-button';
+import { AddNodeButton } from '@/features/editor/components/add-node-button';
 
 export const EditorLoading = () => {
     return <LoadingView message="Loading editor..." />
