@@ -3,7 +3,7 @@ import { NonRetriableError } from "inngest";
 import ky, {type Options as KyOptions} from "ky";
 
 type HttpRequestData = {
-    endPoint?: string;
+    endpoint?: string;
     method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
     body?: string;
 }
@@ -14,12 +14,12 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async ({
     context,
     step,
 }) => {
-    if(!data.endPoint) {
+    if(!data.endpoint) {
         throw new NonRetriableError("HTTP Request node: No endpoint configured");
     }
 
     const result = await step.run("http-request", async () => {
-        const endpoint = data.endPoint!;
+        const endpoint = data.endpoint!;
         const method = data.method || "GET";
 
         const options: KyOptions = {method};
@@ -44,7 +44,5 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async ({
         }
     });
 
-    // const result = await step.run("http-Request", async () => context);
-
-    return result;
+   return result;
 }
