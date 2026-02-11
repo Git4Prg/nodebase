@@ -115,7 +115,7 @@ export const HttpRequestDialog = ({
                                     <FormLabel>Variable Name</FormLabel>
                                     <FormControl>
                                         <Input 
-                                            placeholder="https://api.example.com/users/{{httpResponse.data.id}}"
+                                            placeholder="myApiCall"
                                             {...field}
                                         />
                                     </FormControl>
@@ -164,7 +164,7 @@ export const HttpRequestDialog = ({
                                     <FormLabel>Endpoint URL</FormLabel>
                                     <FormControl>
                                         <Input 
-                                            placeholder="myApiCall"
+                                            placeholder="https://api.example.com/users/{{httpResponse.data.id}}"
                                             {...field}
                                         />
                                     </FormControl>
