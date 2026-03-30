@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nodebase
 
-## Getting Started
+A powerful and visual node-based workflow automation platform built with Next.js. Connect your favorite apps, AI models, and services to automate tasks effortlessly.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Visual Workflow Builder:** An intuitive drag-and-drop interface powered by React Flow to build complex automations.
+- **Multiple Triggers:** Start your workflows via Manual Triggers, HTTP Webhooks, Google Forms, or Stripe events.
+- **AI & Integrations:** Seamlessly integrate with leading LLMs (OpenAI, Anthropic, Gemini) and communication platforms (Slack, Discord).
+- **Credential Management:** Securely store and manage API keys for your third-party integrations.
+- **Robust Executions:** Reliable workflow execution, event tracking, and error monitoring powered by Inngest.
+- **Modern Tech Stack:** Built on top of Next.js 15, Prisma (PostgreSQL), tRPC, Better Auth, and Tailwind CSS + Radix UI.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js (v18 or higher)
+- PostgreSQL database
+- Inngest (Local Dev Server or Cloud)
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository and install dependencies:**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Set up environment variables:**
+   Create a `.env` file in the root directory and configure your database and authentication variables (refer to `.env.example` if available):
+   ```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/nodebase"
+   # Depending on your setup, you'll also need keys for Better Auth, Inngest, Sentry, etc.
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Initialize the database:**
+   Generate the Prisma client and sync your schema:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
 
-## Deploy on Vercel
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   *Your app should now be running on [http://localhost:3000](http://localhost:3000).*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **Start Inngest Dev Server (in a separate terminal):**
+   ```bash
+   npx inngest-cli@latest dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💡 How to Use
+
+1. **Sign Up / Log In:** Create an account to access the dashboard.
+2. **Add Credentials:** Head to the credentials section to add API keys for the integrations you want to use (e.g., OpenAI, Anthropic, Discord).
+3. **Create a Workflow:** Navigate to your workflows and create a new project.
+4. **Drag & Drop Nodes:** Use the visual canvas to add a **Trigger** node (e.g., Manual Trigger) and any subsequent **Action** nodes. Connect them by dragging lines between node handles.
+5. **Configure Nodes:** Click on any node to configure its specific data, prompt, or parameters.
+6. **Run & Monitor:** Execute the workflow manually or via webhooks, and monitor real-time progress and history in the Executions tab.
